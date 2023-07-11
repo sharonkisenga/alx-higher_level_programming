@@ -1,4 +1,4 @@
 #!/usr/bin/python3
-for alphabet in range (97, 123):
-    if chr(alphabet) is not 'q' and chr(alphabet) is not 'e':
-        print("{}".format(chr(alphabet)), end="")
+for xup in range(ord('a'), ord('z') + 1):
+    if chr(xup) != 'q' and chr(xup) != 'e':
+        print("{}".format(chr(xup)), end='')
