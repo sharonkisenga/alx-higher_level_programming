@@ -18,14 +18,11 @@ if __name__ == "__main__":
 
     elif op == "-":
         num = sub(a, b)
-        elif op == "*":
+    elif op == "*":
         num = mul(a, b)
-
     elif op == "/":
         num = div(a, b)
-
     else:
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
-
-    print("{:d} {} {:d} = {:d}".format(a, op, b, num))
+        print("{:d} {} {:d} = {:d}".format(a, op, b, num))
