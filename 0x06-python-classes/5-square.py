@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 class Square:
-    """ Square class"""
+    """ write a class square """
     def __init__(self, size=0):
         if type(size) != int:
             raise TypeError("size must be an integer")
