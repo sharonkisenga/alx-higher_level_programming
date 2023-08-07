@@ -1,59 +1,62 @@
 #!/usr/bin/python3
-"""define a Rectangle"""
-
-
+"""pass the rectangle class"""
 class Rectangle:
-    """Rectangle class"""
+    """Class of a Rectangle"""
 
     def __init__(self, width=0, height=0):
-        """define for Rectangle"""
+        """Init class"""
         self.width = width
         self.height = height
 
-    def __str__(self):
-        """I need the rectangle"""
-        if self.__height == 0 or self.__width == 0:
-            return ""
-        size = "#" * self.__width
-        rect = []
-        for index in range(self.__height):
-            rect.append(size)
-        return "\n".join(rect)
-
     @property
     def width(self):
-        """Rectangle width"""
+        """Get width"""
         return self.__width
 
     @width.setter
-    def width(self, value):
-        """Rectangle width"""
-        if type(value) != int:
+    def width(self, widthValue):
+        """get width"""
+        if type(widthValue) != int:
             raise TypeError("width must be an integer")
-        if value < 0:
+        if widthValue < 0:
             raise ValueError("width must be >= 0")
-        self.__width = value
+        self.__width = widthValue
 
     @property
     def height(self):
-        """Rectangle height"""
+        """get height"""
         return self.__height
 
     @height.setter
-    def height(self, value):
-        """Rectangle height"""
-        if type(value) != int:
+    def height(self, HeightValue):
+        """get height"""
+        if type(HeightValue) != int:
             raise TypeError("height must be an integer")
-        if value < 0:
+        if HeightValue < 0:
             raise ValueError("height must be >= 0")
-        self.__height = value
+        self.__height = HeightValue
 
     def area(self):
-        """Rectangle area"""
-        return self.__height * self.__width
+        """find area"""
+        return self.__width * self.__height
 
     def perimeter(self):
-        """returns the perimeter of the Rectangle"""
-        if self.__height == 0 or self.__width == 0:
-            return
-        return (self.__height * 2) + (self.__width * 2)
+        """find perimeter"""
+        width = self.__width
+        height = self.__height
+        if width == 0 or height == 0:
+            return 0
+        return (width + height) * 2
+
+    def __str__(self):
+        """string representation"""
+        width = self.__width
+        height = self.__height
+        string = ""
+        if width == 0 or height == 0:
+            return string
+        for r in range(height):
+            for c in range(width):
+                string = string + '#'
+            string = string + '\n'
+        return string[:-1]
