@@ -1,4 +1,4 @@
-#include "lists.h"
+#include <stddef.h>
 /**
  * pal - determine if list is palindrome
  * @start: position of list
