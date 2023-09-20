@@ -1,3 +1,3 @@
---Write a script that displays the number of records
+-- Write a script that displays the number of records
 -- Count rows with id 89
 SELECT COUNT(*) FROM first_table WHERE id=89;
