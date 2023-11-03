@@ -1,21 +1,21 @@
 #!/usr/bin/python3
 """takes in a letter and sends a POST request"""
+#!/usr/bin/python3
 import requests
-from sys import argv
+import sys
 
-
-if __name__ == "__main__":
-    """get the status"""
-    url = 'http://0.0.0.0:5000/search_user'
-    r = requests.get(url)
-    if len(argv) == 2:
-        r = requests.post(url, data={'q': argv[1]})
+try:
+    if len(sys.argv) < 2:
+        s = ""
     else:
-        r = requests.post(url, data={'q': ""})
-    try:
-        if r.json() == {}:
-            print("No result")
-        else:
-            print("[{}] {}".format(r.json().get('id'), r.json().get('name')))
-    except:
-        print("Not a valid JSON")
+        s = sys.argv[1]
+    data = {'q': s}
+    url = 'http://0.0.0.0:5000/search_user'
+    res = requests.post(url, data)
+    res = res.json()
+    if res:
+        print("[{}] {}".format(res.get('id'), res.get('name')))
+    else:
+        print("No result")
+except Exception:
+    print("Not a valid JSON")
