@@ -1,24 +1,24 @@
 #!/usr/bin/node
-const request = require('request');
-const episodeId = process.argv[2];
-const url = 'http://swapi.co/api/films/' + episodeId;
 
-function listCharacters (url) {
-  request(url, function (error, response, body) {
-    if (error) {
-      console.log(error);
-    } else {
-      let charList = JSON.parse(body).characters;
-      for (let j = 0; j < charList.length; j++) {
-        request(charList[j], function (error, response, body) {
-          if (error) {
-            console.log(error);
-          } else {
-            console.log(JSON.parse(body).name);
-          }
-        });
-      }
+let id = process.argv[2];
+let url = 'http://swapi.co/api/films/' + id;
+const request = require('request');
+
+request(url, function (err, response, body) {
+  if (err) {
+    console.log(err);
+  } else if (response.statusCode === 200) {
+    body = JSON.parse(body);
+    for (let i in body.characters) {
+      request(body.characters[i], function (err, response, body) {
+	if (err) {
+	  console.log(err);
+	} else if (response.statusCode === 200) {
+	  console.log(JSON.parse(body).name);
+	}
+      });
     }
-  });
-}
-listCharacters(url);
+  } else {
+    console.log('Erorr Code:' + response.statusCode);
+  }
+});
